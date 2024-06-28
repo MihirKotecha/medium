@@ -58,7 +58,6 @@ userRouter.post("/signin", async (c) => {
       return c.json(toker);
   
     } catch (e) {
-      console.log(e);
       c.status(500)
       return c.text("Something Went Wrong!!");
     }
