@@ -20,7 +20,7 @@ userRouter.post("/signup", async (c) => {
     const body = await c.req.json();
 
     const result = signUpInpout.safeParse(body);
-    console.log(result.success);
+    console.log(result.error);
     if(!result.success){
       c.status(403)
       return c.json({
