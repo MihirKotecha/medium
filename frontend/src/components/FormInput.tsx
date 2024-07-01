@@ -14,16 +14,14 @@ interface inputType {
 }
 
 const FormInput = ({ isSignUpPage, currValues, setCurrValue }: inputType) => {
-    
+
     const navigate = useNavigate()
-    
-    const handleClick = () => {
-        console.log(currValues) 
-        
-        formSubmit(isSignUpPage,currValues);
-        navigate("/blog");    
+
+    const handleClick = async () => {
+        await formSubmit(isSignUpPage, currValues);
+        navigate("/blogs");
     }
-    
+
     return (
         <div className="flex justify-center items-center w-1/2 mt-4">
             <div className="flex flex-wrap w-full">
