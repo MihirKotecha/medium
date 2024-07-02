@@ -22,7 +22,7 @@ const BlogCard = ({ authorName, title, content, publishDate }: BlogCardProps) =>
                 {title}
             </div>
             <div className="text-md mt-1">
-                {content}
+                {content.slice(0,200) + "..."}
             </div>
         </div>
     )

@@ -2,7 +2,6 @@ interface avatarProps {
     authorName: string
 }
 
-
 const AuthorAvatar = ({ authorName }: avatarProps) => {
     return (
         <div className="relative inline-flex items-center justify-center w-6 h-6 overflow-hidden bg-gray-500 rounded-full ">

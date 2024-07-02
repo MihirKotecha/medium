@@ -1,16 +1,25 @@
+import AppBar from "../components/AppBar"
 import BlogCard from "../components/BlogCard"
+import { useBlogs } from "../hooks/useBlogs"
 
 const Blog = () => {
+  const {isLoading,renderBlogs} = useBlogs();
+  if(isLoading){
+    return(
+      <div>
+        Loading...
+      </div>
+    )
+  }
   return (
-    <div className="flex justify-center items-center flex-wrap ">
-      <div className="w-1/2 flex justify-center flex-wrap">
-        <BlogCard authorName="Mihir" title="How an Ugly Single-Page Website Makes $5,000 Per Month With Affiliate Marketing" content="No need to create a fancy website with hundereds of pages to make money online. Maing money online is a dream for many people..." publishDate="Dec 11, 2023" />
-        <BlogCard authorName="Mihir" title="How an Ugly Single-Page Website Makes $5,000 Per Month With Affiliate Marketing" content="No need to create a fancy website with hundereds of pages to make money online. Maing money online is a dream for many people..." publishDate="Dec 11, 2023" />
-        <BlogCard authorName="Mihir" title="How an Ugly Single-Page Website Makes $5,000 Per Month With Affiliate Marketing" content="No need to create a fancy website with hundereds of pages to make money online. Maing money online is a dream for many people..." publishDate="Dec 11, 2023" />
-        <BlogCard authorName="Mihir" title="How an Ugly Single-Page Website Makes $5,000 Per Month With Affiliate Marketing" content="No need to create a fancy website with hundereds of pages to make money online. Maing money online is a dream for many people..." publishDate="Dec 11, 2023" />
-        <BlogCard authorName="Mihir" title="How an Ugly Single-Page Website Makes $5,000 Per Month With Affiliate Marketing" content="No need to create a fancy website with hundereds of pages to make money online. Maing money online is a dream for many people..." publishDate="Dec 11, 2023" />
-        <BlogCard authorName="Mihir" title="How an Ugly Single-Page Website Makes $5,000 Per Month With Affiliate Marketing" content="No need to create a fancy website with hundereds of pages to make money online. Maing money online is a dream for many people..." publishDate="Dec 11, 2023" />
-        <BlogCard authorName="Mihir" title="How an Ugly Single-Page Website Makes $5,000 Per Month With Affiliate Marketing" content="No need to create a fancy website with hundereds of pages to make money online. Maing money online is a dream for many people..." publishDate="Dec 11, 2023" />
+    <div>
+      <div className="my-6">
+        <AppBar />
+      </div>
+      <div className="flex justify-center items-center flex-wrap ">
+        <div className="w-1/2 flex justify-center flex-wrap">
+          {renderBlogs.map((blog)=> <BlogCard title={blog.title} authorName={blog.author.username} content={blog.content} publishDate="Dec 11, 2023"/>)}
+        </div>
       </div>
     </div>
   )
