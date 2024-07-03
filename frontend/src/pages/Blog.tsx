@@ -18,7 +18,7 @@ const Blog = () => {
       </div>
       <div className="flex justify-center items-center flex-wrap ">
         <div className="w-1/2 flex justify-center flex-wrap">
-          {renderBlogs.map((blog)=> <BlogCard title={blog.title} authorName={blog.author.username} content={blog.content} publishDate="Dec 11, 2023"/>)}
+          {renderBlogs.map((blog)=> <BlogCard key={blog.id} title={blog.title} id={blog.id} authorName={blog.author.username} content={blog.content} publishDate="Dec 11, 2023"/>)}
         </div>
       </div>
     </div>

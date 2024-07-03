@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import AuthorAvatar from "./AuthorAvata"
 
 interface BlogCardProps {
@@ -5,11 +6,18 @@ interface BlogCardProps {
     title: string,
     content: string,
     publishDate: string,
+    id: string
 }
 
-const BlogCard = ({ authorName, title, content, publishDate }: BlogCardProps) => {
+const BlogCard = ({ authorName, id, title, content, publishDate }: BlogCardProps) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate("/blog/"+id);
+    }
+    
     return (
-        <div className="m-4 border-b border-slate-200 py-4 max-w-xl">
+        <div className="m-4 border-b border-slate-200 py-4 max-w-xl cursor-pointer" onClick={handleClick}>
             <div className="flex">
                 <AuthorAvatar authorName={authorName} />
                 <div className="ml-2 font-semibold ">{authorName}</div>
