@@ -81,6 +81,16 @@ blogRoute.get("/:id", async (c) => {
       where: {
         id,
       },
+      select: {
+        id: true,
+        title: true,
+        content: true,
+        author: {
+          select: {
+            username: true,
+          }
+        }
+      }
     });
     return blog
       ? c.json(blog)
