@@ -4,7 +4,7 @@ import { useGetSingleBlogQuery } from "../services/api";
 const OpenBlog = () => {
   const params = useParams();
   const {data,isLoading} = useGetSingleBlogQuery(params.id||"");
-  console.log(data);
+  // console.log(data);
 
   if(isLoading){
     return(
