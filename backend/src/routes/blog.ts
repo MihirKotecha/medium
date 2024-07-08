@@ -23,13 +23,14 @@ blogRoute.use("/*", async (c, next) => {
       await next();
     } else {
       c.status(403);
-      c.json({
+      return c.json({
         message: "You are not authorized!!",
       });
     }
   } catch (e) {
     c.status(403);
-    c.json({ message: "Anauthorized !!" });
+    console.log(e)
+    return c.json({ message: "Anauthorized !!" });
   }
 });
 
@@ -88,9 +89,9 @@ blogRoute.get("/:id", async (c) => {
         author: {
           select: {
             username: true,
-          }
-        }
-      }
+          },
+        },
+      },
     });
     return blog
       ? c.json(blog)
@@ -111,16 +112,16 @@ blogRoute.get("/posts/bulk", async (c) => {
   }).$extends(withAccelerate());
 
   const blogs = await prisma.post.findMany({
-    select:{
+    select: {
       title: true,
       id: true,
       content: true,
-      author:{
-        select:{
+      author: {
+        select: {
           username: true,
-        }
-      } 
-    }
+        },
+      },
+    },
   });
 
   return c.json(blogs);
