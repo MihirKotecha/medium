@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Blog } from "../utils/store/blogSlice";
+import { createPostType } from "@mihirkotecha/medium-project";
 
 export const api = createApi({
   reducerPath: "api",
@@ -23,7 +24,16 @@ export const api = createApi({
         headers: { Authorization: localStorage.getItem("token") || "" },
       }),
     }),
+
+    addBlog: builder.mutation<void,createPostType>({
+      query: blog => ({
+        url: "/blog/post",
+        method: "POST",
+        headers: {Authorization: localStorage.getItem("token")||""},
+        body: blog
+      }),
+    }),
   }),
 });
 
-export const { useGetAllBlogsQuery, useGetSingleBlogQuery } = api;
+export const { useGetAllBlogsQuery, useGetSingleBlogQuery, useAddBlogMutation } = api;

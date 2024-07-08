@@ -17,7 +17,7 @@ const BlogCard = ({ authorName, id, title, content, publishDate }: BlogCardProps
     }
     
     return (
-        <div className="m-4 border-b border-slate-200 py-4 max-w-xl cursor-pointer" onClick={handleClick}>
+        <div className="m-4 border-b border-slate-200 py-4 max-w-xl cursor-pointer w-full" onClick={handleClick}>
             <div className="flex">
                 <AuthorAvatar authorName={authorName} />
                 <div className="ml-2 font-semibold ">{authorName}</div>

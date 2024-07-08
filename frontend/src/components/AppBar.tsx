@@ -1,13 +1,20 @@
+import { useNavigate } from "react-router-dom"
 import AuthorAvatar from "./AuthorAvata"
 
 const AppBar = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/blogpost")
+  }
   return (
-    <div className="flex justify-between px-12 pb-6 shadow-lg ">
-        <div className="font-bold text-lg">BlogIt</div>
-        <div>
-            <AuthorAvatar authorName="Mihir"/>
-        </div>
-        
+    <div className="flex justify-between px-12 pb-6 shadow-lg items-center">
+      <div className="font-bold text-lg">BlogIt</div>
+      <div className="flex justify-center items-center">
+        <button className="mr-10 w-20 h-8 rounded-2xl text-lg text-black bg-green-500" onClick={handleClick}>Post</button>
+        <AuthorAvatar authorName="Mihir" />
+      </div>
+
     </div>
   )
 }

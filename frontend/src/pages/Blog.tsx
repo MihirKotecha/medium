@@ -1,14 +1,12 @@
 import AppBar from "../components/AppBar";
 import BlogCard from "../components/BlogCard";
 import { useGetAllBlogsQuery } from "../services/api";
-import { useAppSelector } from "../utils/store/hooks";
 
 const Blog = () => {
-  const blogs = useAppSelector((appStore) => appStore.blogs);
 
   const {data,isLoading} = useGetAllBlogsQuery();
 
-  const displayBlogs = blogs.length > 0 ? blogs : data||[];
+  const displayBlogs = data||[];
 
   if (isLoading) {
     return (
