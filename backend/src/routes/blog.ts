@@ -29,7 +29,7 @@ blogRoute.use("/*", async (c, next) => {
     }
   } catch (e) {
     c.status(403);
-    console.log(e)
+    console.log(e);
     return c.json({ message: "Anauthorized !!" });
   }
 });
@@ -44,7 +44,12 @@ blogRoute.post("/post", async (c) => {
   const authorId = c.get("userId");
 
   const blog = await prisma.post.create({
-    data: { title: body.title, content: body.content, authorId: authorId },
+    data: {
+      title: body.title,
+      content: body.content,
+      authorId: authorId,
+      html_content: body.html_content,
+    },
   });
 
   return c.text("Hello World!!");
@@ -86,6 +91,7 @@ blogRoute.get("/:id", async (c) => {
         id: true,
         title: true,
         content: true,
+        html_content: true,
         author: {
           select: {
             username: true,
