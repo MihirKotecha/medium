@@ -2,7 +2,7 @@
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Placeholder from '@tiptap/extension-placeholder'
-import { useCallback, useEffect } from 'react'
+import { useEffect } from 'react'
 
 // Define your extension array
 const extensions = [
@@ -13,21 +13,22 @@ const extensions = [
   })
 ]
 
-const Tiptap = ({setFinalContent}:{setFinalContent:Function}) => {
+const Tiptap = ({ setFinalContent, setFinalStringedContent }: { setFinalContent: Function, setFinalStringedContent: Function }) => {
   const editor = useEditor({
     extensions,
     editorProps: {
-        attributes: {
-            class: "border-l-2 outline-none mt-4 p-4"
-        }
+      attributes: {
+        class: "border-l-2 outline-none mt-4 p-4"
+      }
     }
   })
   useEffect(() => {
     if (editor) {
       const updateContent = () => {
-        const htmlContent = editor.getText();
-        console.log(typeof(htmlContent));
+        const htmlContent = editor.getHTML();
+        const stringedContent = editor.getText();
         setFinalContent(htmlContent);
+        setFinalStringedContent(stringedContent);
       };
       editor.on('update', updateContent);
 
@@ -39,11 +40,11 @@ const Tiptap = ({setFinalContent}:{setFinalContent:Function}) => {
   }, [editor, setFinalContent]);
 
 
- 
+
 
   return (
     <div>
-      <EditorContent editor={editor}/> 
+      <EditorContent editor={editor} />
     </div>
   )
 }

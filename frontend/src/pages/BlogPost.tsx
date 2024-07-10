@@ -9,6 +9,7 @@ const BlogPost = () => {
 
     const [blogContent, setBlogContent] = useState("");
     const [blogTitle, setBlogTitle] = useState("");
+    const [blogString, setBlogString] = useState("");
     const navigate = useNavigate();
     const [addBlog] = useAddBlogMutation();
     const { refetch } = useGetAllBlogsQuery();
@@ -18,9 +19,10 @@ const BlogPost = () => {
         console.log(blogTitle)
         const finalContent: createPostType = {
             title: blogTitle,
-            content: blogContent
+            html_content: blogContent,
+            content: blogString
         }
-
+        console.log(finalContent);
         await addBlog(finalContent);
         refetch();
         navigate("/blogs");
@@ -32,7 +34,7 @@ const BlogPost = () => {
         <div className="">
             <div className="flex flex-col mx-32 mt-36">
                 <input className="w-full border-l p-4 text-4xl h-24 font-serif placeholder-slate-300 flex items-center outline-none" placeholder="Title" onChange={(e) => setBlogTitle(e.target.value)}></input>
-                <Tiptap setFinalContent={setBlogContent} />
+                <Tiptap setFinalContent={setBlogContent} setFinalStringedContent={setBlogString}/>
                 <button
                     onClick={handleClick}
                     className="mt-4 px-4 py-2 bg-green-500 text-white rounded w-40"

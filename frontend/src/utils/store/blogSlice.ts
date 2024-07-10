@@ -5,6 +5,7 @@ export interface Blog{
     title: string,
     id: string,
     content: string,
+    html_content: string,
     author: {
         username: string
     }

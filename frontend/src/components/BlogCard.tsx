@@ -30,7 +30,7 @@ const BlogCard = ({ authorName, id, title, content, publishDate }: BlogCardProps
                 {title}
             </div>
             <div className="text-md mt-1">
-                {content.slice(0,200) + "..."}
+                {content.slice(0, 200) + "..."}
             </div>
         </div>
     )
