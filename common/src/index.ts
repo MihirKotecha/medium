@@ -13,7 +13,8 @@ export const signInInput = z.object({
 
 export const createPost = z.object({
     title : z.string(),
-    content: z.string()
+    content: z.string(),
+    html_content: z.string()
 });
 
 export const updatePost = z.object({
