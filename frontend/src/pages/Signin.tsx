@@ -14,7 +14,7 @@ const Signin = () => {
 
   return (
     <div className="grid grid-cols-1 h-screen justify-center items-center lg:grid-cols-2">
-      <div className="invisible lg:visible">
+      <div className="hidden lg:visible">
         <Quote />
       </div>
       <div className="flex justify-center flex-col items-center w-full h-screen">
