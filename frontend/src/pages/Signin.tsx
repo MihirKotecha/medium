@@ -21,7 +21,7 @@ const Signin = () => {
         <div className="text-3xl font-bold ">Log In to your account</div>
         <div className="w-full flex justify-center items-center mt-2">
           <h1 className="text-slate-400">Don't have an account?</h1>
-          <Link to="/signup" className="ml-1 underline text-slate-400">Sign Up</Link>
+          <Link to="/" className="ml-1 underline text-slate-400">Sign Up</Link>
         </div>
         <FormInput isSignUpPage={false} currValues={signinInputs} setCurrValue={setSignInInput} />
       </div>
