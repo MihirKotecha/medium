@@ -15,14 +15,11 @@ const BlogPost = () => {
     const { refetch } = useGetAllBlogsQuery();
 
     const handleClick = async () => {
-        console.log(blogContent)
-        console.log(blogTitle)
         const finalContent: createPostType = {
             title: blogTitle,
             html_content: blogContent,
             content: blogString
         }
-        console.log(finalContent);
         await addBlog(finalContent);
         refetch();
         navigate("/blogs");

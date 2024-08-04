@@ -5,7 +5,6 @@ import AuthorAvatar from "../components/AuthorAvata";
 const OpenBlog = () => {
   const params = useParams();
   const { data, isLoading } = useGetSingleBlogQuery(params.id || "");
-  // console.log(data?.author);
 
   if (isLoading) {
     return (
