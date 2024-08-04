@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { formSubmit } from "../utils/formSubmit"
+import { useState } from "react"
 
 interface currValuesType {
     username: string,
@@ -15,11 +16,13 @@ interface inputType {
 
 const FormInput = ({ isSignUpPage, currValues, setCurrValue }: inputType) => {
 
+    const [invalidLogin,setInvalidLogin] = useState(false);
     const navigate = useNavigate()
 
     const handleClick = async () => {
-        await formSubmit(isSignUpPage, currValues);
-        navigate("/blogs");
+        const result = await formSubmit(isSignUpPage, currValues);
+        if(result?.success) navigate("/blogs");
+        else setInvalidLogin(true);
     }
 
     return (
@@ -55,6 +58,8 @@ const FormInput = ({ isSignUpPage, currValues, setCurrValue }: inputType) => {
                     }}
                     required />
                 }
+
+                {invalidLogin && <div className="mt-2 text-red-600">Invalid credentials please try again!!</div>}
 
                 <button type="button" className="mt-6 w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" onClick={handleClick}>Submit</button>
 
