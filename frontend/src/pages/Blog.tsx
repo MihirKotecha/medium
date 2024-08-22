@@ -10,18 +10,18 @@ const Blog = () => {
   const displayBlogs = data || [];
 
   if (isLoading) {
-  return (
-    <div className="flex justify-center flex-wrap">
-      <div className="w-full mt-6">
-        <AppBar />
-      </div>
-      <div className="w-1/2 flex justify-center items-center flex-col">
-        <BlogListSkeleton />
-        <BlogListSkeleton />
-        <BlogListSkeleton />
-        <BlogListSkeleton />
-      </div></div>
-  );
+    return (
+      <div className="flex justify-center flex-wrap">
+        <div className="w-full mt-6">
+          <AppBar />
+        </div>
+        <div className="w-1/2 flex justify-center items-center flex-col">
+          <BlogListSkeleton />
+          <BlogListSkeleton />
+          <BlogListSkeleton />
+          <BlogListSkeleton />
+        </div></div>
+    );
   }
 
   return (
