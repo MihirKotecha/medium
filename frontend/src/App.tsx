@@ -7,6 +7,7 @@ import OpenBlog from './pages/OpenBlog'
 import { Provider } from 'react-redux'
 import { appStore } from './utils/store/appstore'
 import BlogPost from './pages/BlogPost'
+import User from './pages/User'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             <Route path='/blogs' element={<Blog />} />
             <Route path='/blog/:id' element={<OpenBlog />} />
             <Route path='/blogpost' element={<BlogPost />} />
+            <Route path='/user' element={<User />} />
           </Routes>
         </BrowserRouter>
       </Provider>
