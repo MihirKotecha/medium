@@ -6,18 +6,21 @@ interface currValuesType {
   email?: string;
 }
 
-export const formSubmit = async (isSignUp: Boolean,currValues: currValuesType) => {
+export const formSubmit = async (
+  isSignUp: Boolean,
+  currValues: currValuesType,
+) => {
   if (isSignUp) {
     const token = await axios.post(
       "https://backend.mihir-k1.workers.dev/api/v1/user/signup",
-      currValues
+      currValues,
     );
     localStorage.setItem("token", token.data);
   } else {
     try {
       const token = await axios.post(
         "https://backend.mihir-k1.workers.dev/api/v1/user/signin",
-        currValues
+        currValues,
       );
       localStorage.setItem("token", token.data);
       return {
