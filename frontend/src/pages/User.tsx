@@ -17,6 +17,8 @@ const User = () => {
 
   return (
     <div className="grid grid-cols-1 justify-center items-center w-screen">
+      <div className="my-6 w-full">
+        <AppBar />
       </div>
       <div className="grid grid-cols-2 justify-center items-start w-full">
         <div>Hello</div>
